@@ -1,5 +1,6 @@
 package com.cmsc355.teams;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 //This is the fixed line.
@@ -28,8 +30,56 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+
+
             }
         });
+        Button playActivityBtn = (Button)findViewById(R.id.playActivityBtn);
+        playActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
+                startActivity(startIntent);
+            }
+        });
+
+        Button settingsActivityBtn = (Button)findViewById(R.id.settingsActivityBtn);
+        settingsActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startIntent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(startIntent);
+            }
+        });
+
+        Button creativeActivityBtn = (Button)findViewById(R.id.creativeActivityBtn);
+        creativeActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startIntent = new Intent(getApplicationContext(), CreativeActivity.class);
+                startActivity(startIntent);
+            }
+        });
+
+        Button mapShareActivityBtn = (Button)findViewById(R.id.mapShareActivityBtn);
+        mapShareActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startIntent = new Intent(getApplicationContext(), MapShareActivity.class);
+                startActivity(startIntent);
+            }
+        });
+
+        Button leaderboardsActivityBtn = (Button)findViewById(R.id.leaderboardsActivityBtn);
+        leaderboardsActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startIntent = new Intent(getApplicationContext(), LeaderboardsActivity.class);
+                startActivity(startIntent);
+            }
+        });
+
     }
 
     @Override
