@@ -23,5 +23,14 @@ public class PlayActivity extends AppCompatActivity {
             }
         });
 
+        Button playMapActivityBtn = (Button)findViewById(R.id.playMapActivityBtn);
+        playMapActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startPlayIntent = new Intent(getApplicationContext(), PlayingDefaultMapActivity.class);
+                startActivity(startPlayIntent);
+            }
+        });
+
     }
 }
