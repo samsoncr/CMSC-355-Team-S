@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        //The following are buttons in the main menu
         Button playActivityBtn = (Button)findViewById(R.id.playActivityBtn);
         playActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
