@@ -15,7 +15,7 @@ public class PlayingDefaultMapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing_default_map);
 
-        final ImageView character = (ImageView)findViewById(R.id.character);
+        //ImageView character = (ImageView)findViewById(R.id.character);
 
         Button playActivityBtn = (Button)findViewById(R.id.playActivityBtn);
         playActivityBtn.setOnClickListener(new View.OnClickListener() {
@@ -30,7 +30,8 @@ public class PlayingDefaultMapActivity extends AppCompatActivity {
         moveUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                character.setY(character.getHeight()+(1/10));
+                ImageView character = (ImageView)findViewById(R.id.character);
+                character.setY(character.getY()-5);
             }
         });
 
@@ -38,7 +39,8 @@ public class PlayingDefaultMapActivity extends AppCompatActivity {
         moveDownBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                character.setY(character.getHeight()-(1/10));
+                ImageView character = (ImageView)findViewById(R.id.character);
+                character.setY(character.getY()+5);
             }
         });
 
@@ -46,7 +48,8 @@ public class PlayingDefaultMapActivity extends AppCompatActivity {
         moveLeftBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                character.setX(character.getHeight()-(1/10));
+                ImageView character = (ImageView)findViewById(R.id.character);
+                character.setX(character.getX()-5);
             }
         });
 
@@ -54,7 +57,8 @@ public class PlayingDefaultMapActivity extends AppCompatActivity {
         moveRightBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                character.setX(character.getHeight()+(1/10));
+                ImageView character = (ImageView)findViewById(R.id.character);
+                character.setX(character.getX()+5);
             }
         });
 
