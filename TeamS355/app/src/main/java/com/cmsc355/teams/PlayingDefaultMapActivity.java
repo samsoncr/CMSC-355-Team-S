@@ -2,20 +2,37 @@ package com.cmsc355.teams;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.EventLog;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class PlayingDefaultMapActivity extends AppCompatActivity {
+public class PlayingDefaultMapActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_playing_default_map);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(new GameView(this));
+
+
+
+
+
+
+
+
+
+
+
+
 
         Button playActivityBtn = (Button) findViewById(R.id.playActivityBtn);
         playActivityBtn.setOnClickListener(new View.OnClickListener() {
