@@ -1,6 +1,7 @@
 package com.cmsc355.teams;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,15 +27,18 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Set background music from raw resource folder and placed it in loop
+        final MediaPlayer rapWest= MediaPlayer.create(MainActivity.this,R.raw.rap_west);
+        rapWest.start();
+        rapWest.setLooping(true);
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-
-
-
             }
         });
 
@@ -44,15 +48,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
+                rapWest.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
+
+
 
         Button settingsActivityBtn = (Button)findViewById(R.id.settingsActivityBtn);
         settingsActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), SettingsActivity.class);
+                rapWest.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
@@ -62,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), CreativeActivity.class);
+                rapWest.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
@@ -71,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), MapShareActivity.class);
+                rapWest.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
@@ -80,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), LeaderboardsActivity.class);
+                rapWest.pause();
                 startActivity(startIntent);
             }
         });*/
