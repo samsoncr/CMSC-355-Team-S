@@ -18,6 +18,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 //This is the fixed line.
+    //Put the variables here and the modifiers as private for encapsulation For ex: private Toolbar toolbar
+    //Then initialize the variable in th onCreate method
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button leaderboardsActivityBtn = (Button)findViewById(R.id.leaderboardsActivityBtn);
+        /*Button leaderboardsActivityBtn = (Button)findViewById(R.id.leaderboardsActivityBtn);
         leaderboardsActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,10 +94,15 @@ public class MainActivity extends AppCompatActivity {
                 rapWest.pause();
                 startActivity(startIntent);
             }
-        });
+        });*/
 
     }
-
+    //Better way of doing a onclick listener because doing it in the onCreate method is gonna slow
+    //down the app and its a old way of implementing button clicks
+    public void openLeaderboard(View view){
+        Intent intent = new Intent(getApplicationContext(), LeaderboardsActivity.class);
+        startActivity(intent);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

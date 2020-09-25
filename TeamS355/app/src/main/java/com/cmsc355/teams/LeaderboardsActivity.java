@@ -24,4 +24,5 @@ public class LeaderboardsActivity extends AppCompatActivity {
         });
 
     }
+
 }
