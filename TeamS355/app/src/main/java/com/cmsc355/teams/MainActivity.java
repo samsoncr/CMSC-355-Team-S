@@ -17,6 +17,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 //This is the fixed line.
+    //Put the variables here and the modifiers as private for encapsulation For ex: private Toolbar toolbar
+    //Then initialize the variable in th onCreate method
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
