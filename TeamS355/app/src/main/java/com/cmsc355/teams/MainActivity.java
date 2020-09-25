@@ -27,10 +27,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Set background music from raw resource folder and placed it in loop
         final MediaPlayer rapWest= MediaPlayer.create(MainActivity.this,R.raw.rap_west);
-        if(rapWest.isPlaying()==false){
-            rapWest.start();
-        }
+        rapWest.start();
         rapWest.setLooping(true);
 
 
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
-                rapWest.pause();
+                rapWest.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), SettingsActivity.class);
-                rapWest.pause();
+                rapWest.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), CreativeActivity.class);
-                rapWest.pause();
+                rapWest.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), MapShareActivity.class);
-                rapWest.pause();
+                rapWest.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
