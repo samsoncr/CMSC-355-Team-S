@@ -8,33 +8,49 @@
 
     <Button
         android:id="@+id/playMapActivityBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="118dp"
+        android:layout_height="59dp"
         android:text="Play Map"
         app:layout_constraintBottom_toTopOf="@+id/selectMapActivityBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/gameLoopBtn"
+        android:layout_width="118dp"
+        android:layout_height="78dp"
+        android:text="Launch UPS and FPS Tracker"
+        app:layout_constraintBottom_toTopOf="@+id/mainMenuBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectMapActivityBtn"
+        app:layout_constraintVertical_bias="0.506" />
 
     <Button
         android:id="@+id/selectMapActivityBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="320dp"
+        android:layout_width="118dp"
+        android:layout_height="59dp"
         android:text="Select Map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.238" />
 
     <Button
         android:id="@+id/mainMenuBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="118dp"
+        android:layout_height="46dp"
         android:text="Previous"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectMapActivityBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/selectMapActivityBtn"
+        app:layout_constraintVertical_bias="0.51" />
 </androidx.constraintlayout.widget.ConstraintLayout>
