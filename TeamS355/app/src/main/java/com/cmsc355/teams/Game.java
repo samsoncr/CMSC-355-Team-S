@@ -48,18 +48,22 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         drawUPS(canvas);
         drawFPS(canvas);
     }
-
+    // UPS FUNCTION
     public void drawUPS(Canvas canvas){
+        //get average UPS from gameLoop class
         String averageUPS = Double.toString(gameLoop.getAverageUPS());
+        // set string color
         Paint paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.emerald);
         paint.setColor(color);
         paint.setTextSize(50);
         canvas.drawText("UPS: " + averageUPS, 100, 100, paint);
     }
-
+    // FPS FUNCTION
     public void drawFPS(Canvas canvas){
+        //get average FPS from gameLoop class
         String averageFPS = Double.toString(gameLoop.getAverageFPS());
+        //Set string color and size
         Paint paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.emerald);
         paint.setColor(color);
