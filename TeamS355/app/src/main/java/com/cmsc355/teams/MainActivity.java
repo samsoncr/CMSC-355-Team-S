@@ -84,8 +84,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
-
-        /*Button leaderboardsActivityBtn = (Button)findViewById(R.id.leaderboardsActivityBtn);
+        //undid the comment because it messed up the sound whenever you would press
+        //the leader board button
+        Button leaderboardsActivityBtn = (Button)findViewById(R.id.leaderboardsActivityBtn);
         leaderboardsActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,14 +94,14 @@ public class MainActivity extends AppCompatActivity {
                 rapWest.pause();
                 startActivity(startIntent);
             }
-        });*/
+        });
 
-    }
+    /*} //had to comment this out because it messed up the sound and leader board button
     //Better way of doing a onclick listener because doing it in the onCreate method is gonna slow
     //down the app and its a old way of implementing button clicks
     public void openLeaderboard(View view){
         Intent intent = new Intent(getApplicationContext(), LeaderboardsActivity.class);
-        startActivity(intent);
+        startActivity(intent); */
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
