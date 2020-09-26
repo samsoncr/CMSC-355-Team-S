@@ -14,6 +14,7 @@ public class PlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
+        //allows the user to click this button to go to the main menu
         Button mainMenuBtn = (Button)findViewById(R.id.mainMenuBtn);
         mainMenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -23,6 +24,7 @@ public class PlayActivity extends AppCompatActivity {
             }
         });
 
+        //allows the user to click the map to choose the activity the user wanted to play
         Button playMapActivityBtn = (Button)findViewById(R.id.playMapActivityBtn);
         playMapActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +33,7 @@ public class PlayActivity extends AppCompatActivity {
                 startActivity(startPlayIntent);
             }
         });
+
 
         Button gameLoopBtn = (Button)findViewById(R.id.gameLoopBtn);
         gameLoopBtn.setOnClickListener(new View.OnClickListener() {
