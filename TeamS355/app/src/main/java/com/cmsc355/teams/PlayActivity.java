@@ -32,5 +32,14 @@ public class PlayActivity extends AppCompatActivity {
             }
         });
 
+        Button gameLoopBtn = (Button)findViewById(R.id.gameLoopBtn);
+        gameLoopBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startPlayIntent = new Intent(getApplicationContext(), PlayingActivity_B.class);
+                startActivity(startPlayIntent);
+            }
+        });
+
     }
 }
