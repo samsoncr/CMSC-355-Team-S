@@ -14,6 +14,7 @@ public class LeaderboardsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboards);
 
+        //allows the user to see the previous scores on the game
         Button mainMenuBtn = (Button)findViewById(R.id.mainMenuBtn);
         mainMenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
