@@ -1,7 +1,10 @@
 package com.cmsc355.teams;
 
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.SurfaceHolder;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 public class MainThread extends Thread {
 
@@ -27,6 +30,8 @@ public class MainThread extends Thread {
                     this.gameView.update();
                     this.gameView.draw(canvas);
                 }
+                System.out.println("printing from game loop");
+                Log.d("test!", "hello");
             } catch (Exception e) {
 
             } finally {
