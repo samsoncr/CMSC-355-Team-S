@@ -30,8 +30,8 @@ public class MainThread extends Thread {
                     this.gameView.update();
                     this.gameView.draw(canvas);
                 }
-                System.out.println("printing from game loop");
-                Log.d("test!", "hello");
+//                System.out.println("printing from game loop");
+//                Log.d("test!", "hello");
             } catch (Exception e) {
 
             } finally {

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.EventLog;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -26,16 +27,7 @@ public class PlayingDefaultMapActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(new GameView(this));
 
-
-
-
-
-
-
-
-
-
-
+        setContentView(new Button(this), WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
 
 
 //        Button playActivityBtn = (Button) findViewById(R.id.playActivityBtn);
