@@ -56,7 +56,19 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     public void update() {
         character.update();
+    }
 
+    public void triggerUpBtn(){
+        character.triggerUpBtn();
+    }
+    public void triggerDownBtn(){
+        character.triggerDownBtn();
+    }
+    public void triggerRightBtn(){
+        character.triggerRightBtn();
+    }
+    public void triggerLeftBtn(){
+        character.triggerLeftBtn();
     }
 
     @Override
