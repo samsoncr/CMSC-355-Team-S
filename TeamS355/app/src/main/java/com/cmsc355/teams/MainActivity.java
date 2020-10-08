@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Set background music from raw resource folder and placed it in loop
+        //background music automatically plays when game is opened
         final MediaPlayer rapWest= MediaPlayer.create(MainActivity.this,R.raw.rap_west);
         rapWest.start();
         rapWest.setLooping(true);
