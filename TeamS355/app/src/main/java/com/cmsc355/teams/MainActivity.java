@@ -16,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+//UI should be able to allow the user to see which buttons to clearly press to start game/go to
+//other screens such as the leader board
 public class MainActivity extends AppCompatActivity {
 //This is the fixed line.
     //Put the variables here and the modifiers as private for encapsulation For ex: private Toolbar toolbar
