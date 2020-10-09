@@ -18,6 +18,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     //Christopher Samson Midterm Commit 1
+    //Christopher Samson Third Commit Midterm
 //This is the fixed line.
     //Put the variables here and the modifiers as private for encapsulation For ex: private Toolbar toolbar
     //Then initialize the variable in th onCreate method
