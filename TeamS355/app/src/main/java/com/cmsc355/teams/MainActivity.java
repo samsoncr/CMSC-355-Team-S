@@ -98,6 +98,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        Button playActivityBtn = (Button)findViewById(R.id.playActivityBtn);
+//        playActivityBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
+//                rapWest.pause(); //pause main menu music
+//                startActivity(startIntent);
+//            }
+//        });
+
     /*} //had to comment this out because it messed up the sound and leader board button
     //Better way of doing a onclick listener because doing it in the onCreate method is gonna slow
     //down the app and its a old way of implementing button clicks
