@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import androidx.core.content.ContextCompat;
 
 public class Player {
-    private static final double SPEED_PIXELS_PER_SECOND = 400.0;
+    private static final double SPEED_PIXELS_PER_SECOND = 500.0; //max speed of character movement
     private static final double MAX_SPEED = SPEED_PIXELS_PER_SECOND / GameLoop.MAX_UPS;
     private double positionX;
     private double positionY;

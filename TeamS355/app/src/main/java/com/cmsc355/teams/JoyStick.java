@@ -7,6 +7,7 @@ import android.graphics.Paint;
 public class JoyStick {
     private Paint innerCirclePaint;
     private Paint outerCirclePaint;
+    private Paint outerLineCirclePaint;
     private int innerCircleRadius;
     private int outerCircleRadius;
     private int outerCircleCenterPositionX;
@@ -30,17 +31,31 @@ public class JoyStick {
         this.outerCircleRadius = outerCircleRadius;
         this.innerCircleRadius = innerCircleRadius;
 
+        // OuterLineCirclePaint;
+        outerLineCirclePaint = new Paint();
+        outerLineCirclePaint.setColor(Color.WHITE);
+        outerLineCirclePaint.setStyle(Paint.Style.FILL_AND_STROKE);
+
         // Color paint of circles
         outerCirclePaint = new Paint();
         outerCirclePaint.setColor(Color.GRAY);
         outerCirclePaint.setStyle(Paint.Style.FILL_AND_STROKE);
 
         innerCirclePaint = new Paint();
-        innerCirclePaint.setColor(Color.BLUE);
+        innerCirclePaint.setColor(Color.WHITE);
         innerCirclePaint.setStyle(Paint.Style.FILL_AND_STROKE);
+
+
     }
 
     public void draw(Canvas canvas) {
+
+        //draw outer line Circle
+        canvas.drawCircle(
+                outerCircleCenterPositionX,
+                outerCircleCenterPositionY,
+                (outerCircleRadius+5),
+                outerLineCirclePaint);
 
         //draw outer circle
         canvas.drawCircle(
@@ -55,6 +70,9 @@ public class JoyStick {
                 innerCircleCenterPositionY,
                 innerCircleRadius,
                 innerCirclePaint);
+
+
+
     }
 
     public void update() {
