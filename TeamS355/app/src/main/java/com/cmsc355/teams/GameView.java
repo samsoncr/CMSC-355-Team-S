@@ -71,6 +71,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         character.triggerLeftBtn();
     }
 
+    public boolean detectCollision(Character character1, Character character2){
+
+    }
+
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);

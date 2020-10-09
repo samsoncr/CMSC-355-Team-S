@@ -20,6 +20,14 @@ public class Character {
         velocityY = 0;
     }
 
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
+    }
+
     public void draw(Canvas canvas){
         canvas.drawBitmap(image, x, y, null);
     }
