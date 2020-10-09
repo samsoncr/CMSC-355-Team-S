@@ -1,12 +1,14 @@
 package com.cmsc355.teams;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -32,7 +34,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         player = new Player(getContext(),1000,500,30);
 
         // Initialize game object
-        joystick = new JoyStick(275, 700, 70, 40);
+        joystick = new JoyStick(775, 1250, 100, 50);
         setFocusable(true);
     }
 
@@ -108,4 +110,5 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         joystick.update();
         player.update(joystick);
     }
+
 }
