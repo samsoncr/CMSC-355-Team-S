@@ -19,10 +19,10 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/gameLoopBtn"
+        android:id="@+id/joyStickBtn"
         android:layout_width="118dp"
         android:layout_height="78dp"
-        android:text="Launch UPS and FPS Tracker"
+        android:text="Tumb controller"
         app:layout_constraintBottom_toTopOf="@+id/mainMenuBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

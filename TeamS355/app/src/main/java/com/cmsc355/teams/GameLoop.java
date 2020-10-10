@@ -1,7 +1,10 @@
 package com.cmsc355.teams;
 
 import android.graphics.Canvas;
+import android.view.Surface;
 import android.view.SurfaceHolder;
+
+import java.util.Observer;
 
 public class GameLoop extends Thread{
     private Game game;
@@ -9,8 +12,8 @@ public class GameLoop extends Thread{
     private boolean isRunning = false;
     private double averageUPS;
     private double averageFPS;
-    private double MAX_UPS = 30.0;
-    private double UPS_PERIOD = 1E+3/MAX_UPS;
+    public static final double MAX_UPS = 30.0;
+    private static final double UPS_PERIOD = 1E+3/MAX_UPS;
 
     public GameLoop(Game game, SurfaceHolder surfaceHolder){
         this.game = game;
@@ -66,7 +69,7 @@ public class GameLoop extends Thread{
                         e.printStackTrace();
                     }
                 }
-        }
+            }
 
             // Pause game loop to not exceed target UPS
             elapsedTime = System.currentTimeMillis() - startTime;
