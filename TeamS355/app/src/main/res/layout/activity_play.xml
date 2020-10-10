@@ -22,7 +22,7 @@
         android:id="@+id/joyStickBtn"
         android:layout_width="118dp"
         android:layout_height="78dp"
-        android:text="Tumb controller"
+        android:text="Thumb Controller"
         app:layout_constraintBottom_toTopOf="@+id/mainMenuBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
