@@ -1,6 +1,7 @@
 package com.cmsc355.teams;
 
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -31,9 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
         //Set background music from raw resource folder and placed it in loop
         //background music automatically plays when game is opened
-        final MediaPlayer rapWest= MediaPlayer.create(MainActivity.this,R.raw.rap_west);
-        rapWest.start();
-        rapWest.setLooping(true);
+
+        AudioManager audioManager = (AudioManager) getSystemService(this.AUDIO_SERVICE);
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 20, 0);
+
+        final MediaPlayer sexyJazzLoop= MediaPlayer.create(this,R.raw.sexy_jazz_loop);
+        sexyJazzLoop.start();
+        //sexy_jazz_loop.setLooping(true);
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
-                rapWest.pause(); //pause main menu music
+                sexyJazzLoop.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
@@ -63,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), SettingsActivity.class);
-                rapWest.pause(); //pause main menu music
+                sexyJazzLoop.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
@@ -73,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), CreativeActivity.class);
-                rapWest.pause(); //pause main menu music
+                sexyJazzLoop.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
@@ -83,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), MapShareActivity.class);
-                rapWest.pause(); //pause main menu music
+                sexyJazzLoop.pause(); //pause main menu music
                 startActivity(startIntent);
             }
         });
@@ -94,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), LeaderboardsActivity.class);
-                rapWest.pause();
+                sexyJazzLoop.pause();
                 startActivity(startIntent);
             }
         });
