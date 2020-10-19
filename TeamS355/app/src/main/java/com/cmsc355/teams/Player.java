@@ -1,8 +1,12 @@
 package com.cmsc355.teams;
 
+import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Point;
+import android.view.Display;
+import android.view.WindowManager;
 
 import androidx.core.content.ContextCompat;
 
@@ -15,6 +19,16 @@ public class Player {
     private Paint paint;
     private double velocityX;
     private double velocityY;
+
+//    private AccessibilityService context;
+//    private WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+//    private Display display = wm.getDefaultDisplay();
+//
+//
+//    private Point size = new Point();
+
+    private int width = 1100;
+    private int height = 1500;
 
     public Player(Context context, double positionX, double positionY, double radius) {
         this.positionX = positionX;
@@ -33,8 +47,12 @@ public class Player {
     public void update(JoyStick joyStick) {
         velocityX = joyStick.getActuatorX()*MAX_SPEED;
         velocityY = joyStick.getActuatorY()*MAX_SPEED;
-        positionX += velocityX;
-        positionY += velocityY;
+        if(positionX + velocityX > 0 && positionX + velocityX < width){
+            positionX += velocityX;
+        }
+        if(positionY + velocityY > 0 && positionY + velocityY < height){
+            positionY += velocityY;
+        }
     }
 
     public void setPosition(double positionX, double positionY) {
