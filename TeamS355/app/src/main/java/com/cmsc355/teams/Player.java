@@ -2,6 +2,7 @@ package com.cmsc355.teams;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -15,6 +16,8 @@ public class Player {
     private static final double MAX_SPEED = SPEED_PIXELS_PER_SECOND / GameLoop.MAX_UPS;
     private final double width;
     private final double height;
+    private final int bottomBarHeight;
+    private final int statuBarHeight;
     private double positionX;
     private double positionY;
     private double radius;
@@ -38,7 +41,8 @@ public class Player {
         display.getSize(size);
         this.width = size.x;
         this.height = size.y;
-
+        this.statuBarHeight = getStatusBarHeight(context);
+        this.bottomBarHeight = getNavigationBarHeight(context);
 
     }
 
@@ -48,14 +52,31 @@ public class Player {
 
     }
 
+    public int getStatusBarHeight(Context context){
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return resources.getDimensionPixelSize(resourceId);
+        }
+        return 0;
+    }
+    public int getNavigationBarHeight(Context context){
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return resources.getDimensionPixelSize(resourceId);
+        }
+        return 0;
+    }
+
     public void update(JoyStick joyStick) {
 
         velocityX = joyStick.getActuatorX()*MAX_SPEED;
         velocityY = joyStick.getActuatorY()*MAX_SPEED;
-        if((velocityX + positionX) < width && (velocityX + positionX) > 0){
+        if((velocityX + positionX) < (width - radius) && (velocityX + positionX) > (0 + radius)){
             positionX += velocityX;
         }
-        if((velocityY + positionY) > height && (velocityY + positionY) < 0){
+        if((velocityY + positionY) < (height + statuBarHeight - bottomBarHeight - radius) && (velocityY + positionY) > 0 + radius){
             positionY += velocityY;
         }
         //positionX += velocityX;
