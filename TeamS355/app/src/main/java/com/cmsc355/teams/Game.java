@@ -21,6 +21,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     private final JoyStick joystick;
     private final Player player;
     private GameLoop gameLoop;
+    private final Block block;
 
     public Game(Context context) {
         super(context);
@@ -32,6 +33,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         gameLoop = new GameLoop(this, surfaceHolder);
         // Initialize player
         player = new Player(getContext(),1000,500,30);
+        block = new Block(getContext(), 200, 200, 200, 200);
 
         // Initialize game object
         joystick = new JoyStick(775, 1250, 100, 50);
@@ -85,6 +87,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         joystick.draw(canvas);
         player.draw(canvas);
+        block.draw(canvas);
     }
 
     public void drawUPS(Canvas canvas){
@@ -108,7 +111,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
         // Update game state
         joystick.update();
-        player.update(joystick);
+        player.update(joystick, block.getPositionX(), block.getPositionY(), block.getWidth(), block.getHeight());
     }
 
 }

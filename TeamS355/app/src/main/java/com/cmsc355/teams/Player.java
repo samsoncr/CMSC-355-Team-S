@@ -44,19 +44,59 @@ public class Player {
 
     }
 
-    public void update(JoyStick joyStick) {
+    public void update(JoyStick joyStick, double x, double y, double width, double height) {
         velocityX = joyStick.getActuatorX()*MAX_SPEED;
         velocityY = joyStick.getActuatorY()*MAX_SPEED;
         if(positionX + velocityX > 0 && positionX + velocityX < width){
-            positionX += velocityX;
+            if(!xCollisionWithRectangle(x, y, width, height)){
+                positionX += velocityX;
+            }
         }
         if(positionY + velocityY > 0 && positionY + velocityY < height){
-            positionY += velocityY;
+            if(!yCollisionWithRectangle(x, y, width, height)){
+                positionY += velocityY;
+            }
         }
     }
 
     public void setPosition(double positionX, double positionY) {
         this.positionX = positionX;
         this.positionY = positionY;
+    }
+
+    public boolean xCollisionWithRectangle(double x, double y, double width, double height){
+        double slope = ((positionY + velocityY)-positionY)/((positionX + velocityX) - positionX);
+        if(positionX < x){
+            double intersect = positionY + slope*(x-positionX);
+            if(intersect < y && intersect > y + height){
+                return true;
+        }
+        } else if (positionX > x + width) {
+            double intersect = positionY - slope*(positionX-(x+width));
+            if(intersect < y && intersect > y + height){
+                return true;
+            }
+        } else {
+            return false;
+        }
+        return false;
+    }
+
+    public boolean yCollisionWithRectangle(double x, double y, double width, double height){
+        double slope = ((positionX + velocityX)-positionX)/((positionY + velocityY) - positionY);
+        if(positionY < y){
+            double intersect = positionX + slope*(y-positionY);
+            if(intersect > x && intersect < x + width){
+                return true;
+            }
+        } else if (positionX > x + width) {
+            double intersect = positionX - slope*(positionY-(y+height));
+            if(intersect > x && intersect < x + width){
+                return true;
+            }
+        } else {
+            return false;
+        }
+        return false;
     }
 }
