@@ -5,10 +5,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 
 import androidx.core.content.ContextCompat;
+
+import java.util.ArrayList;
 
 public class Player {
     private static final double SPEED_PIXELS_PER_SECOND = 500.0; //max speed of character movement
@@ -20,12 +23,6 @@ public class Player {
     private double velocityX;
     private double velocityY;
 
-//    private AccessibilityService context;
-//    private WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-//    private Display display = wm.getDefaultDisplay();
-//
-//
-//    private Point size = new Point();
 
     private int width = 1100;
     private int height = 1500;
@@ -44,19 +41,25 @@ public class Player {
 
     }
 
-    public void update(JoyStick joyStick, double x, double y, double width, double height) {
+    public void update(JoyStick joyStick, ArrayList<Block> blocks) {
         velocityX = joyStick.getActuatorX()*MAX_SPEED;
         velocityY = joyStick.getActuatorY()*MAX_SPEED;
-        if(positionX + velocityX > 0 && positionX + velocityX < width){
-            if(!xCollisionWithRectangle(x, y, width, height)){
-                positionX += velocityX;
+        for(Block block : blocks){
+            if(positionX + velocityX > 0 && positionX + velocityX < width){
+                if(!xCollisionWithRectangle(block.getPositionX(), block.getPositionY(), block.getWidth(), block.getHeight())){
+                    positionX += velocityX;
+                    Log.i("updating", "updating");
+                }
+            }
+            Log.i("update", "something");
+            if(positionY + velocityY > 0 && positionY + velocityY < height){
+                if(!yCollisionWithRectangle(block.getPositionX(), block.getPositionY(), block.getWidth(), block.getHeight())){
+                    positionY += velocityY;
+                    Log.i("updating", "updating");
+                }
             }
         }
-        if(positionY + velocityY > 0 && positionY + velocityY < height){
-            if(!yCollisionWithRectangle(x, y, width, height)){
-                positionY += velocityY;
-            }
-        }
+
     }
 
     public void setPosition(double positionX, double positionY) {
@@ -66,14 +69,16 @@ public class Player {
 
     public boolean xCollisionWithRectangle(double x, double y, double width, double height){
         double slope = ((positionY + velocityY)-positionY)/((positionX + velocityX) - positionX);
-        if(positionX < x){
+        if(positionX < x && positionX + velocityX > x){
             double intersect = positionY + slope*(x-positionX);
-            if(intersect < y && intersect > y + height){
+            if(intersect > y && intersect < y + height){
+                Log.i("Collision?", "Collided");
                 return true;
         }
-        } else if (positionX > x + width) {
+        } else if (positionX > x + width && positionX + velocityX < x + width) {
             double intersect = positionY - slope*(positionX-(x+width));
-            if(intersect < y && intersect > y + height){
+            if(intersect > y && intersect < y + height){
+                Log.i("Collision?", "Collided");
                 return true;
             }
         } else {
@@ -83,20 +88,178 @@ public class Player {
     }
 
     public boolean yCollisionWithRectangle(double x, double y, double width, double height){
+        Log.i("Collision?", "start");
+
         double slope = ((positionX + velocityX)-positionX)/((positionY + velocityY) - positionY);
-        if(positionY < y){
+        if(positionY < y && positionY + velocityY > y){
             double intersect = positionX + slope*(y-positionY);
             if(intersect > x && intersect < x + width){
+                Log.i("Collision?", "Collided");
                 return true;
             }
-        } else if (positionX > x + width) {
+//            else if(CollisionWithCircle(x, y, radius)){
+//                    SlideOnCircle(x, y, radius);
+//                    return true;
+//            }
+//            else if(CollisionWithCircle(x+width, y, radius)){
+//                SlideOnCircle(x, y, radius);
+//                return true;
+//            }
+        } else if (positionY > y + height && positionY +velocityY < y + height) {
             double intersect = positionX - slope*(positionY-(y+height));
             if(intersect > x && intersect < x + width){
+                Log.i("Collision?", "Collided");
                 return true;
             }
+//            else if(CollisionWithCircle(x, y+height, radius)){
+//                SlideOnCircle(x, y, radius);
+//                return true;
+//            }
+//            else if(CollisionWithCircle(x+width, y+height, radius)){
+//                SlideOnCircle(x, y, radius);
+//                return true;
+//            }
         } else {
             return false;
         }
         return false;
+    }
+
+    public boolean CollisionWithTopLeftCorner(double x, double y, double radius){
+        double slope = ((positionY + velocityY)-positionY)/((positionX + velocityX) - positionX);
+        double linearIntersect;
+
+        if(x < positionX){
+            linearIntersect = positionY + slope*(x-positionX);
+        }
+        else if(positionX < x){
+            linearIntersect = positionY - slope*(x-positionX);
+        }
+        else{
+            linearIntersect = positionY;
+        }
+        double b = ((2*slope)*(linearIntersect - radius)-(2*radius));
+        double a = (slope*slope) + 1;
+        double c = radius*radius*(linearIntersect-radius)*(linearIntersect-radius)-(radius*radius);
+        double x1Intercept = (-b + Math.sqrt(((b*b)-(4*a*c))))/(2*a);
+        double y1Intercept = (slope*x1Intercept) + linearIntersect;
+
+        if(x1Intercept < x && y1Intercept < y){
+            return true;
+        }
+
+        double x2Intercept = (-b - Math.sqrt(((b*b)-(4*a*c))))/(2*a);
+        double y2Intercept = (slope*x1Intercept) + linearIntersect;
+
+        if(x2Intercept < x && y2Intercept < y){
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean CollisionWithTopRightCorner(double x, double y, double radius){
+        double slope = ((positionY + velocityY)-positionY)/((positionX + velocityX) - positionX);
+        double linearIntersect;
+
+        if(x < positionX){
+            linearIntersect = positionY + slope*(x-positionX);
+        }
+        else if(positionX < x){
+            linearIntersect = positionY - slope*(x-positionX);
+        }
+        else{
+            linearIntersect = positionY;
+        }
+        double b = ((2*slope)*(linearIntersect - radius)-(2*radius));
+        double a = (slope*slope) + 1;
+        double c = radius*radius*(linearIntersect-radius)*(linearIntersect-radius)-(radius*radius);
+        double x1Intercept = (-b + Math.sqrt(((b*b)-(4*a*c))))/(2*a);
+        double y1Intercept = (slope*x1Intercept) + linearIntersect;
+
+        if(x1Intercept > x && y1Intercept < y){
+            return true;
+        }
+
+        double x2Intercept = (-b - Math.sqrt(((b*b)-(4*a*c))))/(2*a);
+        double y2Intercept = (slope*x1Intercept) + linearIntersect;
+
+        if(x2Intercept > x && y2Intercept < y){
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean CollisionWithBottomLeftCorner(double x, double y, double radius){
+        double slope = ((positionY + velocityY)-positionY)/((positionX + velocityX) - positionX);
+        double linearIntersect;
+
+        if(x < positionX){
+            linearIntersect = positionY + slope*(x-positionX);
+        }
+        else if(positionX < x){
+            linearIntersect = positionY - slope*(x-positionX);
+        }
+        else{
+            linearIntersect = positionY;
+        }
+        double b = ((2*slope)*(linearIntersect - radius)-(2*radius));
+        double a = (slope*slope) + 1;
+        double c = radius*radius*(linearIntersect-radius)*(linearIntersect-radius)-(radius*radius);
+        double x1Intercept = (-b + Math.sqrt(((b*b)-(4*a*c))))/(2*a);
+        double y1Intercept = (slope*x1Intercept) + linearIntersect;
+
+        if(x1Intercept < x && y1Intercept > y){
+            return true;
+        }
+
+        double x2Intercept = (-b - Math.sqrt(((b*b)-(4*a*c))))/(2*a);
+        double y2Intercept = (slope*x1Intercept) + linearIntersect;
+
+        if(x2Intercept < x && y2Intercept > y){
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean CollisionWithBottomRightCorner(double x, double y, double radius){
+        double slope = ((positionY + velocityY)-positionY)/((positionX + velocityX) - positionX);
+        double linearIntersect;
+
+        if(x < positionX){
+            linearIntersect = positionY + slope*(x-positionX);
+        }
+        else if(positionX < x){
+            linearIntersect = positionY - slope*(x-positionX);
+        }
+        else{
+            linearIntersect = positionY;
+        }
+        double b = ((2*slope)*(linearIntersect - radius)-(2*radius));
+        double a = (slope*slope) + 1;
+        double c = radius*radius*(linearIntersect-radius)*(linearIntersect-radius)-(radius*radius);
+        double x1Intercept = (-b + Math.sqrt(((b*b)-(4*a*c))))/(2*a);
+        double y1Intercept = (slope*x1Intercept) + linearIntersect;
+
+        if(x1Intercept > x && y1Intercept > y){
+            return true;
+        }
+
+        double x2Intercept = (-b - Math.sqrt(((b*b)-(4*a*c))))/(2*a);
+        double y2Intercept = (slope*x1Intercept) + linearIntersect;
+
+        if(x2Intercept > x && y2Intercept > y){
+            return true;
+        }
+
+        return false;
+    }
+
+    public void SlideOnCircle(double x, double y, double circleRadius){
+
+        
+
     }
 }
