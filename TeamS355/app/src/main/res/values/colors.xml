@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="emerald">#33F7D6</color>
+    <color name="magenta">#F7C433</color>
+    <color name="player">#FF0000</color>
+
+    <color name="OmbreBackground">#0031FF</color>
+
+</resources>
