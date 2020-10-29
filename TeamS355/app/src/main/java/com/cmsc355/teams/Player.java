@@ -13,6 +13,8 @@ import android.view.WindowManager;
 import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 
+//Test number 4 for Continuous Integration On ChristopherSamson branch
+
 public class Player {
     private static final double SPEED_PIXELS_PER_SECOND = 500.0; //max speed of character movement
     private static final double MAX_SPEED = SPEED_PIXELS_PER_SECOND / GameLoop.MAX_UPS;
