@@ -97,11 +97,11 @@ public class Player {
                     Log.i("updating", "updating");
                 }
             }
-            Log.i("update", "something");
+//            Log.i("update", "something");
             if(positionY + velocityY > 0 && positionY + velocityY < height){
                 if(!yCollisionWithRectangle(block.getPositionX(), block.getPositionY(), block.getWidth(), block.getHeight())){
                     positionY += velocityY;
-                    Log.i("updating", "updating");
+//                    Log.i("updating", "updating");
                 }
             }
         }
