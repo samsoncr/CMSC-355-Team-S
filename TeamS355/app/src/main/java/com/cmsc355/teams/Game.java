@@ -13,6 +13,8 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
+import java.util.ArrayList;
+
 /**
  * Game manages all objects in the game and is responsible for updating all states and render all object to the screen
  */
@@ -21,6 +23,8 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     private final JoyStick joystick;
     private final Player player;
     private GameLoop gameLoop;
+//    private final Block block;
+    private final ArrayList<Block> blocks;
 
     public Game(Context context) {
         super(context);
@@ -32,6 +36,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         gameLoop = new GameLoop(this, surfaceHolder);
         // Initialize player
         player = new Player(getContext(),1000,500,30);
+//        block = new Block(getContext(), 200, 200, 200, 200);
+        blocks = new ArrayList<>();
+        blocks.add(new Block(getContext(), 200, 200, 200, 200));
 
         // Initialize game object
         joystick = new JoyStick(775, 1250, 100, 50);
@@ -85,6 +92,10 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         joystick.draw(canvas);
         player.draw(canvas);
+        for(Block block : blocks){
+            block.draw(canvas);
+        }
+
     }
 
     public void drawUPS(Canvas canvas){
@@ -108,7 +119,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
         // Update game state
         joystick.update();
-        player.update(joystick);
+        player.update(joystick, blocks);
     }
 
 }
