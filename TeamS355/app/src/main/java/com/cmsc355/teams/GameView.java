@@ -71,6 +71,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         character.triggerLeftBtn();
     }
 
+
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
