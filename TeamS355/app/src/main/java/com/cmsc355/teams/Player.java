@@ -114,20 +114,29 @@ public class Player {
 
     public boolean xCollisionWithRectangle(double x, double y, double width, double height){
         double slope = ((positionY + velocityY)-positionY)/((positionX + velocityX) - positionX);
-        if(positionX < x && positionX + velocityX > x){
-            double intersect = positionY + slope*(x-positionX);
-            if(intersect > y && intersect < y + height){
-                Log.i("Collision?", "Collided");
+        if(positionX < x && positionX + velocityX > x && xCollisionLeftToRight(slope, x, y, height)){
+            return true;
+        } else if (positionX > x + width && positionX + velocityX < x + width &&xCollisionRightToLeft(slope, x, y, height)) {
                 return true;
-        }
-        } else if (positionX > x + width && positionX + velocityX < x + width) {
-            double intersect = positionY - slope*(positionX-(x+width));
-            if(intersect > y && intersect < y + height){
-                Log.i("Collision?", "Collided");
-                return true;
-            }
         } else {
             return false;
+        }
+    }
+
+    public boolean xCollisionLeftToRight(double slope, double x, double y, double height){
+        double intersect = positionY + slope*(x-positionX);
+        if(intersect > y && intersect < y + height) {
+            Log.i("Collision?", "Collided");
+            return true;
+        }
+        return false;
+    }
+
+    public boolean xCollisionRightToLeft(double slope, double x, double y, double height){
+        double intersect = positionY - slope * (x - positionX);
+        if (intersect > y && intersect < y + height) {
+            Log.i("Collision?", "Collided");
+            return true;
         }
         return false;
     }
