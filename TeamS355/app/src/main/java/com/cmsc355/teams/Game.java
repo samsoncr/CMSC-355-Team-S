@@ -26,9 +26,12 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 //    private final Block block;
     private final ArrayList<Block> blocks;
     private final ArrayList<Obstacle> obstacles;
+    private boolean gameOver = false;
+    private Context context;
 
     public Game(Context context) {
         super(context);
+        this.context = context;
 
         // Get surface holder and add callback
         SurfaceHolder surfaceHolder = getHolder();
@@ -126,6 +129,15 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         // Update game state
         joystick.update();
         player.update(joystick, blocks, obstacles);
+        if(player.getGameOver()){
+            gameOver = true;
+//            Intent i = new Intent(context, GameActivity.class);
+//            context.sendBroadcast(i);
+        }
+    }
+
+    public boolean getGameOver(){
+        return gameOver;
     }
 
 }

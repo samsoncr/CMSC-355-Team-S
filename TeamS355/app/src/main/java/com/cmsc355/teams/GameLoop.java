@@ -49,6 +49,9 @@ public class GameLoop extends Thread{
         Canvas canvas = null;
         startTime = System.currentTimeMillis();
         while(isRunning){
+            if(game.getGameOver()){
+                isRunning = false;
+            }
 
             // Try to update and render game
             try {

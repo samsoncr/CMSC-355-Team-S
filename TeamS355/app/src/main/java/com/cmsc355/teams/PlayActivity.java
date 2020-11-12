@@ -40,7 +40,9 @@ public class PlayActivity extends AppCompatActivity {
         joyStickBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(new Game(getApplicationContext()));
+//                setContentView(new Game(getApplicationContext()));
+                Intent startPlayIntent = new Intent(getApplicationContext(), GameActivity.class);
+                startActivity(startPlayIntent);
             }
         });
 
