@@ -15,4 +15,7 @@
     <string name="settings">SETTINGS</string>
     <string name="leaderboards">LEADERBOARDS</string>
     <string name="todo">TODO</string>
+    <string name="play_map">PLAY MAP</string>
+    <string name="thumb_controller">THUMB CONTROLLER</string>
+    <string name="select_map">SELECT MAP</string>
 </resources>

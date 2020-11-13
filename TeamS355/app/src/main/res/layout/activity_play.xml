@@ -8,34 +8,12 @@
         android:background="@color/OmbreBackground"
         tools:context=".MainActivity">
 
-    <!--
-        app:layout_constraintBottom_toTopOf="@+id/selectMapActivityBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" /> />-->
-
-    <!-- app:layout_constraintBottom_toTopOf="@+id/mainMenuBtn"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.558"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/selectMapActivityBtn"
-    app:layout_constraintVertical_bias="0.506" /> />-->
-
-    <!-- app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" /> />-->
-
     <Button
         android:id="@+id/playMapActivityBtn"
         android:layout_width="266dp"
         android:layout_height="60dp"
         android:layout_marginBottom="520dp"
-        android:text="PLAY MAP"
+        android:text="@string/play_map"
         android:textColorHighlight="#AD1C1C"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +25,7 @@
         android:layout_width="266dp"
         android:layout_height="60dp"
         android:layout_marginBottom="124dp"
-        android:text="THUMB CONTROLLER"
+        android:text="@string/thumb_controller"
         android:textColorHighlight="#AD1C1C"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,7 +37,7 @@
         android:layout_width="266dp"
         android:layout_height="60dp"
         android:layout_marginBottom="396dp"
-        android:text="SELECT MAP"
+        android:text="@string/select_map"
         android:textColorHighlight="#AD1C1C"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
