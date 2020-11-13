@@ -6,7 +6,7 @@ import android.graphics.Paint;
 
 import androidx.core.content.ContextCompat;
 
-public class Block {
+public class Obstacle {
 
     private double positionX;
     private double positionY;
@@ -21,7 +21,7 @@ public class Block {
 //
 //    private Point size = new Point();
 
-    public Block(Context context, double positionX, double positionY, double width, double height) {
+    public Obstacle(Context context, double positionX, double positionY, double width, double height) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.width = width;
