@@ -103,6 +103,12 @@ public class Player {
             collideWithBlock(block.getPositionX(), block.getPositionY(), block.getWidth(), block.getHeight());
 //            Log.i("blockposition", block.getPositionX()+"");
         }
+        if(positionX + velocityX < 0 || positionX + velocityX > 1100){
+            velocityX = 0;
+        }
+        if(positionY + velocityY < 0 || positionY + velocityY > 1500){
+            velocityY = 0;
+        }
         positionX += velocityX;
         positionY += velocityY;
     }

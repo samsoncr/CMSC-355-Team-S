@@ -28,7 +28,7 @@ public class Block {
         this.height = height;
 
         paint = new Paint();
-        int color = ContextCompat.getColor(context, R.color.player);
+        int color = ContextCompat.getColor(context, R.color.emerald);
         paint.setColor(color);
     }
     public void draw(Canvas canvas) {
