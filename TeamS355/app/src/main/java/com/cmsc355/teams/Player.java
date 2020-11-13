@@ -30,6 +30,7 @@ public class Player {
     private double velocityY;
     private double slopeX = ((positionY + velocityY)-positionY)/((positionX + velocityX) - positionX);
     private double slopeY = ((positionX + velocityX)-positionX)/((positionY + velocityY) - positionY);
+    private boolean gameOver = false;
 
 
 //    private int width = 1100;
@@ -102,6 +103,12 @@ public class Player {
             collideWithBlock(block.getPositionX(), block.getPositionY(), block.getWidth(), block.getHeight());
 //            Log.i("blockposition", block.getPositionX()+"");
         }
+        if(positionX + velocityX < 0 || positionX + velocityX > 1100){
+            velocityX = 0;
+        }
+        if(positionY + velocityY < 0 || positionY + velocityY > 1500){
+            velocityY = 0;
+        }
         positionX += velocityX;
         positionY += velocityY;
     }
@@ -119,9 +126,9 @@ public class Player {
 //        Log.i("collideWithBlock", "collideWithBlock");
     }
     public void collideLeftBlock(double blockX, double blockY, double blockWidth, double blockHeight){
-        if(positionX < blockX && positionX + velocityX > blockX){
-            double intersect = positionY + slopeX*(blockX-positionX);
-            if(intersect > blockY && intersect < blockY + blockHeight) {
+        if(positionX < blockX - radius && positionX + velocityX > blockX - radius){
+            double intersect = positionY + slopeX*(blockX - radius - positionX);
+            if(intersect > blockY - radius && intersect < blockY + blockHeight + radius) {
                 setVelocityX(0);
 //                Log.i("collideLeft", "collideLeft");
             }
@@ -130,29 +137,29 @@ public class Player {
 
     }
     public void collideRightBlock(double blockX, double blockY, double blockWidth, double blockHeight){
-        if(positionX > blockX + blockWidth && positionX + velocityX < blockX + blockWidth){
-            double intersect = positionY + slopeX*(blockX + blockWidth-positionX);
-            Log.i("Collision?", "before");
+        if(positionX > blockX + blockWidth + radius && positionX + velocityX < blockX + blockWidth + radius){
+            double intersect = positionY + slopeX*(blockX + blockWidth + radius - positionX);
+//            Log.i("Collision?", "before");
 
-            if(intersect > blockY && intersect < blockY + blockHeight) {
+            if(intersect > blockY - radius && intersect < blockY + blockHeight + radius) {
                 setVelocityX(0);
-                Log.i("Collision?", "Collided");
+//                Log.i("Collision?", "Collided");
             }
         }
     }
     public void collideTopBlock(double blockX, double blockY, double blockWidth, double blockHeight){
-        if(positionY < blockY && positionY + velocityY > blockY){
-            double intersect = positionX + slopeY*(blockY-positionY);
-            if(intersect > blockX && intersect < blockX + blockWidth){
+        if(positionY < blockY - radius && positionY + velocityY > blockY - radius){
+            double intersect = positionX + slopeY*(blockY - radius - positionY);
+            if(intersect > blockX - radius && intersect < blockX + blockWidth + radius){
                 Log.i("Collision?", "Collided");
                 setVelocityY(0);
             }
         }
     }
     public void collideBottomBlock(double blockX, double blockY, double blockWidth, double blockHeight){
-        if(positionY > blockY + blockHeight && positionY + velocityY < blockY + blockHeight){
-            double intersect = positionX + slopeY*(blockY + blockHeight - positionY);
-            if(intersect > blockX && intersect < blockX + blockWidth){
+        if(positionY > blockY + blockHeight + radius && positionY + velocityY < blockY + blockHeight + radius){
+            double intersect = positionX + slopeY*(blockY + blockHeight + radius - positionY);
+            if(intersect > blockX - radius && intersect < blockX + blockWidth + radius){
                 Log.i("Collision?", "Collided");
                 setVelocityY(0);
             }
@@ -160,8 +167,8 @@ public class Player {
     }
 
     public void collideWithObstacle(double obstacleX, double obstacleY, double obstacleWidth, double obstacleHeight){
-        if(positionX < obstacleX + obstacleWidth && positionX > obstacleX){
-
+        if(positionX < obstacleX + obstacleWidth + radius && positionX > obstacleX - radius && positionY > obstacleY - radius && positionY < obstacleY + obstacleHeight + radius){
+            gameOver = true;
         }
     }
 //-------------------------------------------------------------------
@@ -302,6 +309,10 @@ public class Player {
     }
     public void setVelocityY(double newVelocityY){
         velocityY = newVelocityY;
+    }
+
+    public boolean getGameOver(){
+        return gameOver;
     }
 
 }
