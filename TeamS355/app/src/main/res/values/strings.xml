@@ -9,4 +9,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="play">PLAY</string>
+    <string name="creative">CREATIVE</string>
+    <string name="map_share">MAP SHARE</string>
+    <string name="settings">SETTINGS</string>
+    <string name="leaderboards">LEADERBOARDS</string>
+    <string name="todo">TODO</string>
 </resources>

@@ -6,4 +6,7 @@
     <color name="emerald">#33F7D6</color>
     <color name="magenta">#F7C433</color>
     <color name="player">#FF0000</color>
+
+    <color name="OmbreBackground">#0031FF</color>
+
 </resources>
