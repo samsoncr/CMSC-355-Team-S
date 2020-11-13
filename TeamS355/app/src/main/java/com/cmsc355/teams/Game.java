@@ -25,6 +25,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     private GameLoop gameLoop;
 //    private final Block block;
     private final ArrayList<Block> blocks;
+    private final ArrayList<Obstacle> obstacles;
 
     public Game(Context context) {
         super(context);
@@ -39,6 +40,8 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 //        block = new Block(getContext(), 200, 200, 200, 200);
         blocks = new ArrayList<>();
         blocks.add(new Block(getContext(), 200, 200, 200, 200));
+        obstacles = new ArrayList<>();
+        obstacles.add(new Obstacle(getContext(), 500, 500, 100, 100));
 
         // Initialize game object
         joystick = new JoyStick(775, 1250, 100, 50);
@@ -95,6 +98,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         for(Block block : blocks){
             block.draw(canvas);
         }
+        for(Obstacle obstacle: obstacles){
+            obstacle.draw(canvas);
+        }
 
     }
 
@@ -119,7 +125,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
         // Update game state
         joystick.update();
-        player.update(joystick, blocks);
+        player.update(joystick, blocks, obstacles);
     }
 
 }

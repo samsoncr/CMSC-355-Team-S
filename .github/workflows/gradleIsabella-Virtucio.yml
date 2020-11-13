@@ -5,9 +5,9 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ master ]
+    branches: [ Isabella-Virtucio ]
   pull_request:
-    branches: [ master ]
+    branches: [ Isabella-Virtucio ]
 
 jobs:
   build:
