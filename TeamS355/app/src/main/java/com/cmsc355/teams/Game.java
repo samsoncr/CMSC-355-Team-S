@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -26,9 +27,14 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 //    private final Block block;
     private final ArrayList<Block> blocks;
     private final ArrayList<Obstacle> obstacles;
+    private boolean gameOver = false;
+    private Context context;
+    private MediaPlayer rapWest;
+    private MediaPlayer gameOverSound;
 
     public Game(Context context) {
         super(context);
+        this.context = context;
 
         // Get surface holder and add callback
         SurfaceHolder surfaceHolder = getHolder();
@@ -41,11 +47,18 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         blocks = new ArrayList<>();
         blocks.add(new Block(getContext(), 200, 200, 200, 200));
         obstacles = new ArrayList<>();
-        obstacles.add(new Obstacle(getContext(), 500, 500, 100, 100));
+        obstacles.add(new Obstacle(getContext(), 500, 500, 100, 100, 10, 10));
+        obstacles.add(new Obstacle(getContext(), 500, 700, 100, 100, 10, 10));
+        obstacles.add(new Obstacle(getContext(), 500, 900, 100, 100, 10, 10));
+        obstacles.add(new Obstacle(getContext(), 500, 1100, 100, 100, 10, 10));
 
         // Initialize game object
         joystick = new JoyStick(775, 1250, 100, 50);
         setFocusable(true);
+
+        rapWest = MediaPlayer.create(context,R.raw.rap_west);
+        rapWest.start();
+        gameOverSound = MediaPlayer.create(context,R.raw.leszek_szary_game_over);
     }
 
     @Override
@@ -125,7 +138,21 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
         // Update game state
         joystick.update();
+        for(Obstacle obstacle: obstacles){
+            obstacle.update();
+        }
         player.update(joystick, blocks, obstacles);
+        if(player.getGameOver()){
+            rapWest.pause();
+            gameOverSound.start();
+            gameOver = true;
+//            Intent i = new Intent(context, GameActivity.class);
+//            context.sendBroadcast(i);
+        }
+    }
+
+    public boolean getGameOver(){
+        return gameOver;
     }
 
 }
