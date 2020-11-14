@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         final MediaPlayer sexyJazzLoop= MediaPlayer.create(this,R.raw.sexy_jazz_loop);
         sexyJazzLoop.start();
-        //sexy_jazz_loop.setLooping(true);
+        sexyJazzLoop.setLooping(true);
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
