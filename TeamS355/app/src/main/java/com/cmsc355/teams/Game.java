@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -28,6 +29,8 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     private final ArrayList<Obstacle> obstacles;
     private boolean gameOver = false;
     private Context context;
+    private MediaPlayer rapWest;
+    private MediaPlayer gameOverSound;
 
     public Game(Context context) {
         super(context);
@@ -52,6 +55,10 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         // Initialize game object
         joystick = new JoyStick(775, 1250, 100, 50);
         setFocusable(true);
+
+        rapWest = MediaPlayer.create(context,R.raw.rap_west);
+        rapWest.start();
+        gameOverSound = MediaPlayer.create(context,R.raw.leszek_szary_game_over);
     }
 
     @Override
@@ -136,6 +143,8 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         }
         player.update(joystick, blocks, obstacles);
         if(player.getGameOver()){
+            rapWest.pause();
+            gameOverSound.start();
             gameOver = true;
 //            Intent i = new Intent(context, GameActivity.class);
 //            context.sendBroadcast(i);

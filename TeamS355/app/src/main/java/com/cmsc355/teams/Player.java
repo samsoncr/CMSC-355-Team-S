@@ -1,5 +1,6 @@
 package com.cmsc355.teams;
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
@@ -7,11 +8,15 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
+
+import static androidx.core.content.ContextCompat.getSystemService;
 
 //Test number 5 for Continuous Integration On ChristopherSamson branch
 
@@ -33,6 +38,7 @@ public class Player {
     private boolean gameOver = false;
 
 
+
 //    private int width = 1100;
 //    private int height = 1500;
 
@@ -44,7 +50,6 @@ public class Player {
         paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.player);
         paint.setColor(color);
-
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         //Display display = getWindowManager().getDefaultDisplay();
@@ -97,6 +102,7 @@ public class Player {
         slopeY = ((positionX + velocityX)-positionX)/((positionY + velocityY) - positionY);
         for(Obstacle obstacle : obstacles){
             collideWithObstacle(obstacle.getPositionX(), obstacle.getPositionY(), obstacle.getWidth(), obstacle.getHeight());
+
         }
 
         for(Block block : blocks){
