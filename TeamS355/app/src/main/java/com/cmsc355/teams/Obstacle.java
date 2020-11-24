@@ -15,6 +15,8 @@ public class Obstacle {
     private Paint paint;
     private double velocityX;
     private double velocityY;
+    private double accelerationX;
+    private double accelerationY;
 
 //    private AccessibilityService context;
 //    private WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -23,13 +25,15 @@ public class Obstacle {
 //
 //    private Point size = new Point();
 
-    public Obstacle(Context context, double positionX, double positionY, double width, double height, double velocityX, double velocityY) {
+    public Obstacle(Context context, double positionX, double positionY, double width, double height, double velocityX, double velocityY, double accelerationX, double accelerationY) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.velocityX = velocityX;
         this.velocityY = velocityY;
         this.width = width;
         this.height = height;
+        this.accelerationX = accelerationX;
+        this.accelerationY = accelerationY;
 
         paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.magenta);
@@ -40,6 +44,18 @@ public class Obstacle {
     }
 
     public void update(){
+        if(velocityX < 0){
+            velocityX -= accelerationX;
+        }
+        else if(velocityX > 0){
+            velocityX += accelerationX;
+        }
+        if(velocityY < 0){
+            velocityY -= accelerationY;
+        }
+        else if(velocityY > 0){
+            velocityY += accelerationY;
+        }
         if(positionX + velocityX < 0 || positionX + velocityX > 1100){
             velocityX = -velocityX;
         }

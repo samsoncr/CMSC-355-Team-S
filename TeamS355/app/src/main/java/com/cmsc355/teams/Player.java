@@ -129,7 +129,8 @@ public class Player {
         if(positionX < blockX - radius && positionX + velocityX > blockX - radius){
             double intersect = positionY + slopeX*(blockX - radius - positionX);
             if(intersect > blockY - radius && intersect < blockY + blockHeight + radius) {
-                setVelocityX(0);
+                velocityX = 0;
+
 //                Log.i("collideLeft", "collideLeft");
             }
 //            Log.i("collideLeft", "collideLeft");
@@ -142,7 +143,7 @@ public class Player {
 //            Log.i("Collision?", "before");
 
             if(intersect > blockY - radius && intersect < blockY + blockHeight + radius) {
-                setVelocityX(0);
+                velocityX = 0;
 //                Log.i("Collision?", "Collided");
             }
         }
@@ -152,7 +153,7 @@ public class Player {
             double intersect = positionX + slopeY*(blockY - radius - positionY);
             if(intersect > blockX - radius && intersect < blockX + blockWidth + radius){
                 Log.i("Collision?", "Collided");
-                setVelocityY(0);
+                velocityY = 0;
             }
         }
     }
@@ -161,7 +162,7 @@ public class Player {
             double intersect = positionX + slopeY*(blockY + blockHeight + radius - positionY);
             if(intersect > blockX - radius && intersect < blockX + blockWidth + radius){
                 Log.i("Collision?", "Collided");
-                setVelocityY(0);
+                velocityY = 0;
             }
         }
     }
