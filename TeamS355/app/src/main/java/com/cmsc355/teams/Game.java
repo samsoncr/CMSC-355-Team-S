@@ -42,12 +42,12 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         player = new Player(getContext(),1000,500,30);
 //        block = new Block(getContext(), 200, 200, 200, 200);
         blocks = new ArrayList<>();
-        blocks.add(new Block(getContext(), 200, 200, 200, 200));
+        blocks.add(new Block(getContext(), 200, 200, 200, 200, 10, 10));
         obstacles = new ArrayList<>();
-        obstacles.add(new Obstacle(getContext(), 500, 500, 100, 100, 10, 10, 0.01, 0.01));
-        obstacles.add(new Obstacle(getContext(), 500, 700, 100, 100, 15, 5, 0.01, 0.01));
-        obstacles.add(new Obstacle(getContext(), 500, 900, 100, 100, 12, 7, 0.01, 0.01));
-        obstacles.add(new Obstacle(getContext(), 500, 1100, 100, 100, 6, 18, 0.01, 0.01));
+        obstacles.add(new Obstacle(getContext(), 500, 500, 100, 100, 1.0, 1.0, 0.01, 0.01));
+        obstacles.add(new Obstacle(getContext(), 500, 700, 100, 100, 1.5, .5, 0.01, 0.01));
+        obstacles.add(new Obstacle(getContext(), 500, 900, 100, 100, 1.2, .7, 0.01, 0.01));
+        obstacles.add(new Obstacle(getContext(), 500, 1100, 100, 100, .6, 1.8, 0.01, 0.01));
 
         // Initialize game object
         joystick = new JoyStick(775, 1250, 100, 50);
@@ -131,6 +131,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
         // Update game state
         joystick.update();
+        for(Block block: blocks){
+            block.update(player.getPositionX(), player.getPositionY(), player.getRadius(), player);
+        }
         for(Obstacle obstacle: obstacles){
             obstacle.update();
         }

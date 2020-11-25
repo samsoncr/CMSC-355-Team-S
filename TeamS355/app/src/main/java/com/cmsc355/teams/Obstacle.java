@@ -56,10 +56,10 @@ public class Obstacle {
         else if(velocityY > 0){
             velocityY += accelerationY;
         }
-        if(positionX + velocityX < 0 || positionX + velocityX > 1100){
+        if(positionX + velocityX < 0 || positionX + width + velocityX > 1100){
             velocityX = -velocityX;
         }
-        if(positionY + velocityY < 0 || positionY + velocityY > 1500){
+        if(positionY + velocityY < 0 || positionY + height + velocityY > 1500){
             velocityY = -velocityY;
         }
         positionX += velocityX;
