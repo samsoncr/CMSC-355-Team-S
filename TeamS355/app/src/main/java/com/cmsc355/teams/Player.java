@@ -38,7 +38,7 @@ public class Player {
     private boolean gameOver = false;
 
 
-
+// exam2 change
 //    private int width = 1100;
 //    private int height = 1500;
 
