@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PlayActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/OmbreBackground"
+        tools:context=".MainActivity">
 
     <Button
         android:id="@+id/playMapActivityBtn"
-        android:layout_width="118dp"
-        android:layout_height="59dp"
-        android:text="Play Map"
-        app:layout_constraintBottom_toTopOf="@+id/selectMapActivityBtn"
+        android:layout_width="266dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="520dp"
+        android:text="@string/play_map"
+        android:textColorHighlight="#AD1C1C"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/joyStickBtn"
-        android:layout_width="118dp"
-        android:layout_height="78dp"
-        android:text="Thumb Controller"
-        app:layout_constraintBottom_toTopOf="@+id/mainMenuBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectMapActivityBtn"
-        app:layout_constraintVertical_bias="0.506" />
-
-    <Button
-        android:id="@+id/selectMapActivityBtn"
-        android:layout_width="118dp"
-        android:layout_height="59dp"
-        android:text="Select Map"
+        android:layout_width="266dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="124dp"
+        android:text="@string/thumb_controller"
+        android:textColorHighlight="#AD1C1C"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/selectMapBtn"
+        android:layout_width="266dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="396dp"
+        android:text="@string/select_map"
+        android:textColorHighlight="#AD1C1C"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/mainMenuBtn"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
-        android:text="Previous"
+        android:layout_width="266dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="264dp"
+        android:text="@string/previous"
+        android:textColorHighlight="#AD1C1C"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectMapActivityBtn"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

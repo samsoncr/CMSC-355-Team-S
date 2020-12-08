@@ -15,6 +15,9 @@ public class Obstacle {
     private Paint paint;
     private double velocityX;
     private double velocityY;
+    private double accelerationX;
+    private double accelerationY;
+
 
 //    private AccessibilityService context;
 //    private WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -23,27 +26,44 @@ public class Obstacle {
 //
 //    private Point size = new Point();
 
-    public Obstacle(Context context, double positionX, double positionY, double width, double height, double velocityX, double velocityY) {
+
+    public Obstacle(Context context, double positionX, double positionY, double width, double height, double velocityX, double velocityY, double accelerationX, double accelerationY) {
+
         this.positionX = positionX;
         this.positionY = positionY;
-        this.velocityX = velocityX;
-        this.velocityY = velocityY;
         this.width = width;
         this.height = height;
+        this.accelerationX = accelerationX;
+        this.accelerationY = accelerationY;
+        this.velocityX = velocityX;
+        this.velocityY = velocityY;
 
         paint = new Paint();
-        int color = ContextCompat.getColor(context, R.color.magenta);
+        int color = ContextCompat.getColor(context, R.color.player);
         paint.setColor(color);
     }
     public void draw(Canvas canvas) {
         canvas.drawRect((float) positionX, (float) positionY, (float) (positionX+width), (float) (positionY+height), paint);
     }
 
+
     public void update(){
-        if(positionX + velocityX < 0 || positionX + velocityX > 1100){
+        if(velocityX < 0){
+            velocityX -= accelerationX;
+        }
+        else if(velocityX > 0){
+            velocityX += accelerationX;
+        }
+        if(velocityY < 0){
+            velocityY -= accelerationY;
+        }
+        else if(velocityY > 0){
+            velocityY += accelerationY;
+        }
+        if(positionX + velocityX < 0 || positionX + width + velocityX > 1100){
             velocityX = -velocityX;
         }
-        if(positionY + velocityY < 0 || positionY + velocityY > 1500){
+        if(positionY + velocityY < 0 || positionY + height + velocityY > 1500){
             velocityY = -velocityY;
         }
         positionX += velocityX;
