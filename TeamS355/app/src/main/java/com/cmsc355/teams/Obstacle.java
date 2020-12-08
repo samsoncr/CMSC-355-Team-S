@@ -35,6 +35,8 @@ public class Obstacle {
         this.height = height;
         this.accelerationX = accelerationX;
         this.accelerationY = accelerationY;
+        this.velocityX = velocityX;
+        this.velocityY = velocityY;
 
         paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.player);
