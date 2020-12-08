@@ -42,12 +42,12 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         player = new Player(getContext(),1000,500,30);
 //        block = new Block(getContext(), 200, 200, 200, 200);
         blocks = new ArrayList<>();
-        blocks.add(new Block(getContext(), 200, 200, 200, 200, 10, 10));
+        blocks.add(new Block(getContext(), 200, 200, 300, 300, 10, 10));
         obstacles = new ArrayList<>();
-        obstacles.add(new Obstacle(getContext(), 500, 500, 100, 100, 1.0, 1.0, 0.01, 0.01));
-        obstacles.add(new Obstacle(getContext(), 500, 700, 100, 100, 1.5, .5, 0.01, 0.01));
-        obstacles.add(new Obstacle(getContext(), 500, 900, 100, 100, 1.2, .7, 0.01, 0.01));
-        obstacles.add(new Obstacle(getContext(), 500, 1100, 100, 100, .6, 1.8, 0.01, 0.01));
+        obstacles.add(new Obstacle(getContext(), 500, 500, 100, 100, 0.5, 0.5, 0.001, 0.001));
+        obstacles.add(new Obstacle(getContext(), 500, 700, 100, 100, 0.75, 0.75, 0.001, 0.001));
+        obstacles.add(new Obstacle(getContext(), 500, 900, 100, 100, 0.6, 0.35, 0.001, 0.001));
+        obstacles.add(new Obstacle(getContext(), 500, 1100, 100, 100, 0.3, 0.9, 0.001, 0.001));
 
         // Initialize game object
         joystick = new JoyStick(775, 1250, 100, 50);
@@ -150,3 +150,35 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import androidx.core.content.ContextCompat;
 
 public class Block {
-
     private double positionX;
     private double positionY;
     private double width;
