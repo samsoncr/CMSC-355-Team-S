@@ -14,6 +14,8 @@ public class Block {
     private Paint paint;
     private double velocityX;
     private double velocityY;
+    private double windowHeight;
+    private double windowWidth;
 
 //    private AccessibilityService context;
 //    private WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -22,13 +24,15 @@ public class Block {
 //
 //    private Point size = new Point();
 
-    public Block(Context context, double positionX, double positionY, double width, double height, double velocityX, double velocityY) {
+    public Block(Context context, double positionX, double positionY, double width, double height, double velocityX, double velocityY, double windowHeight, double windowWidth) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.width = width;
         this.height = height;
         this.velocityX = velocityX;
         this.velocityY = velocityY;
+        this.windowHeight = windowHeight;
+        this.windowWidth = windowWidth;
 
         paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.emerald);
@@ -45,10 +49,10 @@ public class Block {
 
     public void update(double playerPositionX, double playerPositionY, double playerRadius, Player player){
 //        double playerPositionX, double playerPositionY, double playerRadius
-        if(positionX + velocityX < 0 || positionX + width + velocityX > 1100){
+        if(positionX + velocityX < 0 || positionX + width + velocityX > windowWidth){
             velocityX = -velocityX;
         }
-        if(positionY + velocityY < 0 || positionY + height + velocityY > 1500){
+        if(positionY + velocityY < 0 || positionY + height + velocityY > windowHeight - 150){
             velocityY = -velocityY;
         }
         collideWithPlayer(playerPositionX, playerPositionY, playerRadius, player);

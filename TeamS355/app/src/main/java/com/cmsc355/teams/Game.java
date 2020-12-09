@@ -2,6 +2,7 @@ package com.cmsc355.teams;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.media.MediaPlayer;
@@ -31,10 +32,14 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     private Context context;
     private MediaPlayer rapWest;
     private MediaPlayer gameOverSound;
+    private double windowHeight;
+    private double windowWidth;
 
     public Game(Context context) {
         super(context);
         this.context = context;
+        this.windowHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
+        this.windowWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
 
         // Get surface holder and add callback
         SurfaceHolder surfaceHolder = getHolder();
@@ -42,15 +47,15 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         gameLoop = new GameLoop(this, surfaceHolder);
         // Initialize player
-        player = new Player(getContext(),1000,500,30);
+        player = new Player(getContext(),windowWidth/1.25,windowHeight/4,30, windowHeight, windowWidth);
 //        block = new Block(getContext(), 200, 200, 200, 200);
         blocks = new ArrayList<>();
-        blocks.add(new Block(getContext(), 200, 200, 300, 300, 10, 10));
+        blocks.add(new Block(getContext(), 0, 0, 300, 300, 10, 10, windowHeight, windowWidth));
         obstacles = new ArrayList<>();
-        obstacles.add(new Obstacle(getContext(), 500, 500, 100, 100, 0.5, 0.5, 0.001, 0.001));
-        obstacles.add(new Obstacle(getContext(), 500, 700, 100, 100, 0.75, 0.75, 0.001, 0.001));
-        obstacles.add(new Obstacle(getContext(), 500, 900, 100, 100, 0.6, 0.35, 0.001, 0.001));
-        obstacles.add(new Obstacle(getContext(), 500, 1100, 100, 100, 0.3, 0.9, 0.001, 0.001));
+        obstacles.add(new Obstacle(getContext(), windowWidth/2, windowHeight/2, 100, 100, 10, 10, 0.01, 0.01, windowHeight, windowWidth));
+        obstacles.add(new Obstacle(getContext(), windowWidth/2, windowHeight/2, 100, 100, 15, 15, 0.01, 0.01, windowHeight, windowWidth));
+        obstacles.add(new Obstacle(getContext(), windowWidth/2, windowHeight/2, 100, 100, 12, 17, 0.01, 0.01, windowHeight, windowWidth));
+        obstacles.add(new Obstacle(getContext(), windowWidth/2, windowHeight/2, 100, 100, 16, 18, 0.01, 0.01, windowHeight, windowWidth));
 
         // Initialize game object
         joystick = new JoyStick(775, 1250, 100, 50);
