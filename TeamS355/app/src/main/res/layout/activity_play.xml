@@ -12,7 +12,12 @@
         android:id="@+id/playMapActivityBtn"
         android:layout_width="266dp"
         android:layout_height="60dp"
+<<<<<<< HEAD
         android:text="alpha"
+=======
+        android:layout_marginBottom="336dp"
+        android:text="MAP TESTER"
+>>>>>>> 7b4a46e2bf77be2a839a68e6179900468826b072
         android:textColorHighlight="#AD1C1C"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/mainMenuBtn"
@@ -24,10 +29,18 @@
         android:id="@+id/joyStickBtn"
         android:layout_width="266dp"
         android:layout_height="60dp"
+<<<<<<< HEAD
         android:text="@string/play"
         android:textColorHighlight="#AD1C1C"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/selectMapBtn"
+=======
+        android:layout_marginBottom="456dp"
+        android:text="PLAY"
+        android:textColorHighlight="#AD1C1C"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+>>>>>>> 7b4a46e2bf77be2a839a68e6179900468826b072
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +62,11 @@
         android:id="@+id/mainMenuBtn"
         android:layout_width="266dp"
         android:layout_height="60dp"
+<<<<<<< HEAD
         android:layout_marginBottom="164dp"
+=======
+        android:layout_marginBottom="172dp"
+>>>>>>> 7b4a46e2bf77be2a839a68e6179900468826b072
         android:text="@string/previous"
         android:textColorHighlight="#AD1C1C"
         android:textSize="28sp"

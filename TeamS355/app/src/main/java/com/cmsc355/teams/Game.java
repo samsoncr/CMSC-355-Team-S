@@ -28,12 +28,14 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 //    private final Block block;
     private final ArrayList<Block> blocks;
     private final ArrayList<Obstacle> obstacles;
+    private final ArrayList<RotateObstacle> rotateObstacles;
     private boolean gameOver = false;
     private Context context;
     private MediaPlayer rapWest;
     private MediaPlayer gameOverSound;
     private double windowHeight;
     private double windowWidth;
+
 
     public Game(Context context) {
         super(context);
@@ -56,6 +58,10 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         obstacles.add(new Obstacle(getContext(), windowWidth/2, windowHeight/2, 100, 100, 15, 15, 0.01, 0.01, windowHeight, windowWidth));
         obstacles.add(new Obstacle(getContext(), windowWidth/2, windowHeight/2, 100, 100, 12, 17, 0.01, 0.01, windowHeight, windowWidth));
         obstacles.add(new Obstacle(getContext(), windowWidth/2, windowHeight/2, 100, 100, 16, 18, 0.01, 0.01, windowHeight, windowWidth));
+
+        rotateObstacles = new ArrayList<>();
+        rotateObstacles.add(new RotateObstacle(getContext(), 45, 700, 400, 150, 150, 1, 1, 0.001, 0.001));
+        rotateObstacles.add(new RotateObstacle(getContext(), -45, 900, 500, 150, 150, 1, 1, 0.001, 0.001));
 
         // Initialize game object
         joystick = new JoyStick(775, 1250, 100, 50);
@@ -119,6 +125,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         for(Obstacle obstacle: obstacles){
             obstacle.draw(canvas);
         }
+        for(RotateObstacle rotateObstacle : rotateObstacles){
+            rotateObstacle.draw(canvas);
+        }
 
     }
 
@@ -149,7 +158,11 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         for(Obstacle obstacle: obstacles){
             obstacle.update();
         }
-        player.update(joystick, blocks, obstacles);
+        for(RotateObstacle rotateObstacle: rotateObstacles){
+            rotateObstacle.update();
+        }
+        player.update(joystick, blocks, obstacles, rotateObstacles);
+
         if(player.getGameOver()){
             rapWest.pause();
             gameOverSound.start();
