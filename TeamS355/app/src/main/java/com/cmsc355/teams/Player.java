@@ -38,7 +38,7 @@ public class Player {
     private boolean gameOver = false;
 
 
-// exam2 change
+
 //    private int width = 1100;
 //    private int height = 1500;
 
@@ -55,10 +55,12 @@ public class Player {
         //Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
+
+        //For obtaining screen size
         this.width = size.x;
         this.height = size.y;
-        this.statuBarHeight = getStatusBarHeight(context);
-        this.bottomBarHeight = getNavigationBarHeight(context);
+        this.statuBarHeight = getStatusBarHeight(context); //upper bar
+        this.bottomBarHeight = getNavigationBarHeight(context); //lower bar
 
     }
 
@@ -95,7 +97,7 @@ public class Player {
 //        }
         //positionX += velocityX;
         //positionY += velocityY;
-    public void update(JoyStick joyStick, ArrayList<Block> blocks, ArrayList<Obstacle> obstacles) {
+    public void update(JoyStick joyStick, ArrayList<Block> blocks, ArrayList<Obstacle> obstacles, ArrayList<RotateObstacle> rotateObstacles) {
         velocityX = joyStick.getActuatorX()*MAX_SPEED;
         velocityY = joyStick.getActuatorY()*MAX_SPEED;
         slopeX = ((positionY + velocityY)-positionY)/((positionX + velocityX) - positionX);
@@ -105,10 +107,15 @@ public class Player {
 
         }
 
+        for(RotateObstacle rotateObstacle : rotateObstacles){
+            //collideWithObstacle(rotateObstacle.getPositionX(), rotateObstacle.getPositionY(), rotateObstacle.getWidth(), rotateObstacle.getHeight());
+        }
+
         for(Block block : blocks){
             collideWithBlock(block.getPositionX(), block.getPositionY(), block.getWidth(), block.getHeight(), block.getVelocityX(), block.getVelocityY());
 //            Log.i("blockposition", block.getPositionX()+"");
         }
+
         if(positionX - radius + velocityX < 0 || positionX + radius + velocityX > 1100){
             velocityX = 0;
         }
