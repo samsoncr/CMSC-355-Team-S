@@ -8,10 +8,11 @@
     android:background="@color/OmbreBackground"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/playMapActivityBtn"
-        android:layout_width="266dp"
-        android:layout_height="60dp"
+        <Button
+            android:id="@+id/playMapActivityBtn"
+            android:layout_width="266dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toTopOf="@+id/selectMapBtn" />
 <<<<<<< HEAD
         android:text="alpha"
 =======
