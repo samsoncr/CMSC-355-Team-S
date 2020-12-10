@@ -55,8 +55,10 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         obstacles.add(new Obstacle(getContext(), 500, 1100, 100, 100, 0.3, 0.9, 0.001, 0.001));
 
         rotateObstacles = new ArrayList<>();
-        rotateObstacles.add(new RotateObstacle(getContext(), 45, 700, 400, 150, 150, 1, 1, 0.001, 0.001));
-        rotateObstacles.add(new RotateObstacle(getContext(), -45, 900, 500, 150, 150, 1, 1, 0.001, 0.001));
+        rotateObstacles.add(new RotateObstacle(getContext(), 45, 700, 400, 150, 150, 5, 5, 0.001, 0.001));
+        rotateObstacles.add(new RotateObstacle(getContext(), -45, 900, 500, 150, 150, 5, 5, 0.001, 0.001));
+        rotateObstacles.add(new RotateObstacle(getContext(), 45, 600, 400, 150, 150, 5, 5, 0.001, 0.001));
+        rotateObstacles.add(new RotateObstacle(getContext(), -45, 800, 500, 150, 150, 5, 5, 0.001, 0.001));
 
         // Initialize game object
         joystick = new JoyStick(775, 1250, 100, 50);

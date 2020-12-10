@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         //background music automatically plays when game is opened
 
         AudioManager audioManager = (AudioManager) getSystemService(this.AUDIO_SERVICE);
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 10, 0);
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, 0);
 
         final MediaPlayer sexyJazzLoop= MediaPlayer.create(this,R.raw.sexy_jazz_loop);
         sexyJazzLoop.start();
