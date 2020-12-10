@@ -25,8 +25,6 @@ public class Player {
     private static final double MAX_SPEED = SPEED_PIXELS_PER_SECOND / GameLoop.MAX_UPS;
     private final double width;
     private final double height;
-    private final int bottomBarHeight;
-    private final int statuBarHeight;
     private double positionX;
     private double positionY;
     private double radius;
@@ -36,16 +34,21 @@ public class Player {
     private double slopeX = ((positionY + velocityY)-positionY)/((positionX + velocityX) - positionX);
     private double slopeY = ((positionX + velocityX)-positionX)/((positionY + velocityY) - positionY);
     private boolean gameOver = false;
+    private double windowHeight;
+    private double windowWidth;
 
 
 
 //    private int width = 1100;
 //    private int height = 1500;
 
-    public Player(Context context, double positionX, double positionY, double radius) {
+    public Player(Context context, double positionX, double positionY, double radius, double windowHeight, double windowWidth) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.radius = radius;
+        this.windowHeight = windowHeight;
+        this.windowWidth = windowWidth;
+
 
         paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.player);
@@ -59,8 +62,7 @@ public class Player {
         //For obtaining screen size
         this.width = size.x;
         this.height = size.y;
-        this.statuBarHeight = getStatusBarHeight(context); //upper bar
-        this.bottomBarHeight = getNavigationBarHeight(context); //lower bar
+
 
     }
 
@@ -116,15 +118,16 @@ public class Player {
 //            Log.i("blockposition", block.getPositionX()+"");
         }
 
-        if(positionX - radius + velocityX < 0 || positionX + radius + velocityX > 1100){
+        if(positionX - radius + velocityX < 0 || positionX + radius + velocityX > windowWidth){
+
             velocityX = 0;
         }
-        if(positionY - radius + velocityY < 0 || positionY + radius + velocityY > 1500){
+        if(positionY - radius + velocityY < 0 || positionY + radius + velocityY > windowHeight - 150){
             velocityY = 0;
         }
         positionX += velocityX;
         positionY += velocityY;
-        if(positionX > 1100 || positionX < 0 || positionY < 0 || positionY > 1500){
+        if(positionX > windowWidth || positionX < 0 || positionY < 0 || positionY > windowHeight - 150){
             gameOver = true;
         }
     }

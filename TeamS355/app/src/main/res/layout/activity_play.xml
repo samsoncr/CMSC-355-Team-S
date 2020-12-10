@@ -1,63 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/coordinatorLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/OmbreBackground"
-        tools:context=".MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/OmbreBackground"
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/playMapActivityBtn"
-        android:layout_width="266dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="336dp"
-        android:text="MAP TESTER"
-        android:textColorHighlight="#AD1C1C"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/playMapActivityBtn"
+            android:layout_width="266dp"
+            android:layout_height="60dp"
+            android:text="alpha"
+            android:textColorHighlight="#AD1C1C"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toTopOf="@+id/mainMenuBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectMapBtn" />
 
-    <Button
-        android:id="@+id/joyStickBtn"
-        android:layout_width="266dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="456dp"
-        android:text="PLAY"
-        android:textColorHighlight="#AD1C1C"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/joyStickBtn"
+            android:layout_width="266dp"
+            android:layout_height="60dp"
+            android:text="@string/play"
+            android:textColorHighlight="#AD1C1C"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toTopOf="@+id/selectMapBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/selectMapBtn"
-        android:layout_width="266dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="396dp"
-        android:text="@string/select_map"
-        android:textColorHighlight="#AD1C1C"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/selectMapBtn"
+            android:layout_width="266dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="396dp"
+            android:text="@string/select_map"
+            android:textColorHighlight="#AD1C1C"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/mainMenuBtn"
-        android:layout_width="266dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="172dp"
-        android:text="@string/previous"
-        android:textColorHighlight="#AD1C1C"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/mainMenuBtn"
+            android:layout_width="266dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="164dp"
+            android:text="@string/previous"
+            android:textColorHighlight="#AD1C1C"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
